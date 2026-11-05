@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
+  <title>2DO PRIMOFEST 2026 | Rock en Vivo & DJ</title>
+  
+  <!-- Meta tags para compartir en WhatsApp / Redes -->
+  <meta name="description" content="Invitación oficial para el 2do Primofest. Rock en vivo con La Petite Mort y Plagio + DJ Set. 5 de Diciembre 2026 en Providencia.">
+  <meta property="og:title" content="2DO PRIMOFEST 2026 // Rock en Vivo">
+  <meta property="og:description" content="La Petite Mort + Plagio + DJ Set. 5 de Diciembre en Calle Sonora #24, Col. Providencia. ¡Confirma tu lugar!">
+  <meta property="og:type" content="website">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Configuración personalizada de Tailwind -->
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        screens: {
+          'xs': '380px',
+          'sm': '640px',
+          'md': '768px',
+          'lg': '1024px',
+          'xl': '1280px'
+        },
+        extend: {
+          colors: {
+            brand: {
+              black: '#0c0d11',
+              card: '#13151b',
+              lime: '#d4ff00',
+              crimson: '#ff3366',
+              border: 'rgba(255, 255, 255, 0.1)',
+              muted: '#8e94a5'
+            }
+          },
+          fontFamily: {
+            display: ['Syne', 'sans-serif'],
+            body: ['Space Grotesk', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace']
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Google Fonts & Custom CSS -->
+  <link rel="stylesheet" href="css/styles.css">
+
+  <!-- External Libraries (CDN) -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+</head>
+
+<body class="bg-[#0c0d11] text-gray-100 min-h-screen relative font-body selection:bg-[#d4ff00] selection:text-black pb-16 sm:pb-0">
+
+  <!-- Textura sutil y ruido visual -->
+  <div class="grain-overlay"></div>
+
+  <!-- Ticker Superior Marquee Estilo Festival -->
+  <div class="border-b border-white/10 bg-[#090a0d] py-1.5 sm:py-2 overflow-hidden text-[10px] sm:text-xs uppercase tracking-widest font-mono text-zinc-400 select-none w-full max-w-full">
+    <div class="marquee-track flex gap-6 sm:gap-8 items-center">
+      <span class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-[#d4ff00]"></span> 2DO PRIMOFEST</span>
+      <span>•</span>
+      <span class="text-white font-bold">5 DE DICIEMBRE 2026</span>
+      <span>•</span>
+      <span class="text-[#d4ff00]">LA PETITE MORT</span>
+      <span>•</span>
+      <span class="text-[#ff3366]">PLAGIO</span>
+      <span>•</span>
+      <span class="text-white">DJ SET EN VIVO</span>
+      <span>•</span>
+      <span>CALLE SONORA #24, COL. PROVIDENCIA</span>
+      <span>•</span>
+      <span class="text-[#d4ff00] font-bold">CONFIRMA TU ASISTENCIA (MAX 5 ACOMPAÑANTES)</span>
+      <span>•</span>
+      <!-- Duplicado para loop continuo -->
+      <span class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-[#d4ff00]"></span> 2DO PRIMOFEST</span>
+      <span>•</span>
+      <span class="text-white font-bold">5 DE DICIEMBRE 2026</span>
+      <span>•</span>
+      <span class="text-[#d4ff00]">LA PETITE MORT</span>
+      <span>•</span>
+      <span class="text-[#ff3366]">PLAGIO</span>
+      <span>•</span>
+      <span class="text-white">DJ SET EN VIVO</span>
+      <span>•</span>
+      <span>CALLE SONORA #24, COL. PROVIDENCIA</span>
+      <span>•</span>
+      <span class="text-[#d4ff00] font-bold">CONFIRMA TU ASISTENCIA</span>
+    </div>
+  </div>
+
+  <!-- Header / Barra de Navegación Minimalista y Responsiva -->
+  <header class="max-w-5xl mx-auto px-3 sm:px-6 py-3.5 sm:py-5 flex items-center justify-between border-b border-white/5">
+    <div class="flex items-center gap-2 sm:gap-3">
+      <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-md bg-[#d4ff00] text-black font-display font-extrabold flex items-center justify-center text-sm sm:text-lg shadow-[0_0_12px_rgba(212,255,0,0.35)] flex-shrink-0">
+        2P
+      </div>
+      <div>
+        <span class="font-display font-bold tracking-tight text-base sm:text-lg text-white block leading-none">PRIMOFEST</span>
+        <span class="hidden xs:block text-[9px] sm:text-[10px] font-mono uppercase tracking-widest text-zinc-400 mt-0.5">Segunda Edición • 2026</span>
+      </div>
+    </div>
+
+    <div class="flex items-center gap-2 sm:gap-3">
+      <span id="confirmed-count-badge" class="hidden text-[10px] sm:text-xs font-mono py-1 px-2.5 rounded-full bg-white/5 border border-white/10 text-zinc-300"></span>
+      <a href="#confirmar" class="text-[11px] sm:text-xs font-mono font-bold uppercase tracking-wider py-1.5 px-3 sm:py-2 sm:px-4 rounded-full bg-[#d4ff00] text-black hover:bg-[#c2eb00] active:scale-95 transition duration-150">
+        Confirmar
+      </a>
+      <button type="button" class="btn-download-flyer p-1.5 sm:p-2 rounded-full border border-white/10 hover:border-white/30 text-zinc-300 hover:text-white transition" title="Descargar Flyer">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- Main Content Wrapper -->
+  <main class="max-w-4xl mx-auto px-3.5 sm:px-6 py-8 sm:py-14 md:py-16 space-y-12 sm:space-y-16 md:space-y-20">
+
+    <!-- HERO SECTION -->
+    <section class="text-center space-y-4 sm:space-y-6 pt-2 sm:pt-4">
+      <div class="inline-flex items-center gap-2 px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-full border border-white/15 bg-white/5 backdrop-blur-sm text-[10px] sm:text-xs font-mono text-zinc-300">
+        <span class="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-[#d4ff00] live-dot"></span>
+        <span>LINEUP CONFIRMADO // PRIMOS & FAMILY</span>
+      </div>
+
+      <!-- Título Gigante con Escala Fluida para Móviles -->
+      <div class="space-y-1">
+        <h2 class="text-xs sm:text-sm md:text-base font-mono uppercase tracking-[0.25em] sm:tracking-[0.3em] text-[#d4ff00]">Segunda Edición</h2>
+        <h1 class="font-display font-extrabold text-4xl xs:text-5xl sm:text-7xl md:text-8xl tracking-tight text-white uppercase leading-[0.95]">
+          PRIMO<span class="text-transparent bg-clip-text bg-gradient-to-r from-[#d4ff00] via-white to-[#ff3366]">FEST</span>
+        </h1>
+      </div>
+
+      <p class="max-w-md sm:max-w-xl mx-auto text-sm sm:text-base md:text-lg text-zinc-400 font-normal px-2 leading-relaxed">
+        Una noche sin poses, con rock en vivo, DJ set de fiesta y las mejores anécdotas con la familia.
+      </p>
+
+      <!-- Cuenta Regresiva Minimalista y Responsiva -->
+      <div class="pt-2 sm:pt-4">
+        <div id="countdown-container" class="grid grid-cols-4 gap-1.5 sm:gap-3 p-2.5 sm:p-4 rounded-xl sm:rounded-2xl bg-[#13151b] border border-white/10 w-full max-w-xs sm:max-w-md mx-auto shadow-2xl">
+          <div class="text-center py-1">
+            <span id="count-days" class="block font-display font-extrabold text-xl sm:text-3xl md:text-4xl text-white leading-none">00</span>
+            <span class="text-[9px] sm:text-[10px] font-mono uppercase tracking-wider text-zinc-500 block mt-1">Días</span>
+          </div>
+          <div class="text-center py-1 border-l border-white/10">
+            <span id="count-hours" class="block font-display font-extrabold text-xl sm:text-3xl md:text-4xl text-white leading-none">00</span>
+            <span class="text-[9px] sm:text-[10px] font-mono uppercase tracking-wider text-zinc-500 block mt-1">Horas</span>
+          </div>
+          <div class="text-center py-1 border-l border-white/10">
+            <span id="count-minutes" class="block font-display font-extrabold text-xl sm:text-3xl md:text-4xl text-white leading-none">00</span>
+            <span class="text-[9px] sm:text-[10px] font-mono uppercase tracking-wider text-zinc-500 block mt-1">Min</span>
+          </div>
+          <div class="text-center py-1 border-l border-white/10">
+            <span id="count-seconds" class="block font-display font-extrabold text-xl sm:text-3xl md:text-4xl text-[#d4ff00] leading-none">00</span>
+            <span class="text-[9px] sm:text-[10px] font-mono uppercase tracking-wider text-zinc-500 block mt-1">Seg</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EL CARTEL / LINEUP (ESTÉTICA MINIMALISTA ROCK) -->
+    <section class="space-y-4 sm:space-y-6">
+      <div class="flex items-center justify-between border-b border-white/10 pb-2.5">
+        <h3 class="text-[11px] sm:text-xs font-mono uppercase tracking-[0.2em] sm:tracking-[0.25em] text-zinc-400 flex items-center gap-2">
+          <span class="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-[#d4ff00]"></span>
+          Lineup Oficial
+        </h3>
+        <span class="text-[10px] sm:text-xs font-mono text-zinc-500">3 ACTOS // 100% EN VIVO</span>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4">
+        <!-- Banda 1: La Petite Mort -->
+        <div class="band-card rounded-2xl bg-[#13151b] p-4.5 sm:p-7 relative overflow-hidden group">
+          <div class="hidden sm:block absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition text-4xl font-display font-black">
+            01
+          </div>
+          <div class="flex items-center gap-1.5 text-[11px] font-mono text-[#d4ff00] mb-2 sm:mb-3">
+            <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M18 3a1 1 0 00-1.196-.98l-10 2A1 1 0 006 5v9.114A4.369 4.369 0 005 14c-1.657 0-3 .895-3 2s1.343 2 3 2 3-.895 3-2V7.82l8-1.6v5.894A4.37 4.37 0 0015 12c-1.657 0-3 .895-3 2s1.343 2 3 2 3-.895 3-2V3z"/>
+            </svg>
+            <span>BANDA DE ROCK EN VIVO</span>
+          </div>
+          <h4 class="font-display font-extrabold text-2xl xs:text-3xl sm:text-4xl text-white tracking-tight uppercase group-hover:text-[#d4ff00] transition">
+            La Petite Mort
+          </h4>
+          <p class="mt-2 sm:mt-3 text-xs sm:text-sm text-zinc-400 font-normal leading-relaxed">
+            Potencia guitarrera, distorsión y rock alternativo con actitud para calentar motores en grande.
+          </p>
+          <div class="mt-3.5 sm:mt-4 flex flex-wrap gap-1.5 sm:gap-2 text-[10px] sm:text-[11px] font-mono text-zinc-400">
+            <span class="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded bg-white/5 border border-white/10">Rock Alternativo</span>
+            <span class="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded bg-white/5 border border-white/10">En Vivo</span>
+          </div>
+        </div>
+
+        <!-- Banda 2: Plagio -->
+        <div class="band-card rounded-2xl bg-[#13151b] p-4.5 sm:p-7 relative overflow-hidden group">
+          <div class="hidden sm:block absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition text-4xl font-display font-black">
+            02
+          </div>
+          <div class="flex items-center gap-1.5 text-[11px] font-mono text-[#ff3366] mb-2 sm:mb-3">
+            <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M18 3a1 1 0 00-1.196-.98l-10 2A1 1 0 006 5v9.114A4.369 4.369 0 005 14c-1.657 0-3 .895-3 2s1.343 2 3 2 3-.895 3-2V7.82l8-1.6v5.894A4.37 4.37 0 0015 12c-1.657 0-3 .895-3 2s1.343 2 3 2 3-.895 3-2V3z"/>
+            </svg>
+            <span>BANDA DE ROCK EN VIVO</span>
+          </div>
+          <h4 class="font-display font-extrabold text-2xl xs:text-3xl sm:text-4xl text-white tracking-tight uppercase group-hover:text-[#ff3366] transition">
+            Plagio
+          </h4>
+          <p class="mt-2 sm:mt-3 text-xs sm:text-sm text-zinc-400 font-normal leading-relaxed">
+            Repertorio lleno de clásicos, energía pura y rolas para cantar a todo pulmón con los primos.
+          </p>
+          <div class="mt-3.5 sm:mt-4 flex flex-wrap gap-1.5 sm:gap-2 text-[10px] sm:text-[11px] font-mono text-zinc-400">
+            <span class="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded bg-white/5 border border-white/10">Rock Clásico & Indie</span>
+            <span class="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded bg-white/5 border border-white/10">En Vivo</span>
+          </div>
+        </div>
+
+        <!-- DJ Set (Full width card) -->
+        <div class="band-card md:col-span-2 rounded-2xl bg-[#13151b] p-4.5 sm:p-7 relative overflow-hidden group flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 sm:gap-6">
+          <div class="space-y-1.5 max-w-xl">
+            <div class="flex items-center gap-1.5 text-[11px] font-mono text-zinc-400">
+              <span class="w-1.5 h-1.5 rounded-full bg-[#d4ff00]"></span>
+              <span>AFTERSHOW & FIESTA</span>
+            </div>
+            <h4 class="font-display font-extrabold text-xl sm:text-2xl md:text-3xl text-white tracking-tight uppercase">
+              DJ SET // OPEN FORMAT
+            </h4>
+            <p class="text-xs sm:text-sm text-zinc-400">
+              Cierre de noche con hits, mezclas en vivo y fiesta continua hasta que amanezca o el cuerpo aguante.
+            </p>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="text-[10px] sm:text-xs font-mono px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-zinc-300">
+              ⚡ HASTA EL AMANECER
+            </span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- COORDENADAS Y DETALLES DEL EVENTO -->
+    <section class="space-y-4 sm:space-y-6">
+      <div class="flex items-center justify-between border-b border-white/10 pb-2.5">
+        <h3 class="text-[11px] sm:text-xs font-mono uppercase tracking-[0.2em] sm:tracking-[0.25em] text-zinc-400 flex items-center gap-2">
+          <span class="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-white"></span>
+          Coordenadas & Logística
+        </h3>
+        <span class="text-[10px] sm:text-xs font-mono text-zinc-500">INFORMACIÓN CLAVE</span>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
+        <!-- Fecha -->
+        <div class="rounded-xl bg-[#13151b] border border-white/10 p-4 sm:p-5 space-y-1 sm:space-y-2">
+          <div class="text-zinc-500 text-[10px] sm:text-xs font-mono uppercase">01 / Fecha</div>
+          <div class="font-display font-bold text-lg sm:text-xl text-white">Sábado 5 de Diciembre, 2026</div>
+          <div class="text-xs text-zinc-400">Puertas abiertas desde las 8:00 PM</div>
+        </div>
+
+        <!-- Lugar -->
+        <div class="rounded-xl bg-[#13151b] border border-white/10 p-4 sm:p-5 space-y-1 sm:space-y-2">
+          <div class="text-zinc-500 text-[10px] sm:text-xs font-mono uppercase">02 / Ubicación</div>
+          <div class="font-display font-bold text-lg sm:text-xl text-white">Calle Sonora #24</div>
+          <div class="text-xs text-zinc-400">Colonia Providencia</div>
+          <a href="https://www.google.com/maps/search/?api=1&query=Calle+Sonora+24+Col+Providencia" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-xs font-mono text-[#d4ff00] hover:underline pt-1">
+            <span>Ver en Google Maps</span>
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+          </a>
+        </div>
+
+        <!-- Reglas de Oro -->
+        <div class="rounded-xl bg-[#13151b] border border-white/10 p-4 sm:p-5 space-y-1 sm:space-y-2 sm:col-span-2 lg:col-span-1">
+          <div class="text-zinc-500 text-[10px] sm:text-xs font-mono uppercase">03 / Vibes</div>
+          <div class="font-display font-bold text-lg sm:text-xl text-white">Tráete tu Sed</div>
+          <div class="text-xs text-zinc-400">Lleva tus bebidas favoritas, botana y la mejor vibra para cantar.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FORMULARIO DE CONFIRMACIÓN (RSVP) -->
+    <section id="confirmar" class="scroll-mt-6 sm:scroll-mt-10 space-y-4 sm:space-y-6">
+      <div class="flex items-center justify-between border-b border-white/10 pb-2.5">
+        <h3 class="text-[11px] sm:text-xs font-mono uppercase tracking-[0.2em] sm:tracking-[0.25em] text-[#d4ff00] flex items-center gap-2">
+          <span class="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-[#d4ff00]"></span>
+          Registro de Asistencia
+        </h3>
+        <span class="text-[10px] sm:text-xs font-mono text-zinc-400">CUPO Y LOGÍSTICA</span>
+      </div>
+
+      <!-- Tarjeta del Formulario (Ajustada para móvil) -->
+      <div id="form-card-container" class="rounded-2xl bg-[#13151b] border border-white/15 p-4 sm:p-7 md:p-8 shadow-2xl relative">
+        <div class="max-w-xl mx-auto space-y-5 sm:space-y-6">
+          <div class="text-center space-y-1">
+            <h4 class="font-display font-bold text-xl xs:text-2xl sm:text-3xl text-white uppercase tracking-tight">
+              ¿Quién se apunta al Primofest?
+            </h4>
+            <p class="text-xs sm:text-sm text-zinc-400 font-normal leading-relaxed">
+              Ayúdanos a registrar tu nombre y número de acompañantes (máximo 5) para coordinar el espacio y las bebidas.
+            </p>
+          </div>
+
+          <form id="rsvp-form" class="space-y-4 sm:space-y-6">
+            <!-- Campo Nombre -->
+            <div class="space-y-1.5">
+              <label for="nombre" class="block text-[11px] sm:text-xs font-mono uppercase tracking-wider text-zinc-300">
+                Tu Nombre y Apellido <span class="text-[#d4ff00]">*</span>
+              </label>
+              <input 
+                type="text" 
+                id="nombre" 
+                name="nombre" 
+                required 
+                placeholder="Ej. Roberto Martínez o Prima Caro" 
+                class="w-full bg-[#0c0d11] border border-white/15 rounded-xl px-3.5 py-3 text-white placeholder-zinc-600 focus:outline-none focus:border-[#d4ff00] focus:ring-1 focus:ring-[#d4ff00] transition font-body text-base"
+              >
+            </div>
+
+            <!-- Campo Acompañantes (Botones Pills interactivos de 0 a 5) -->
+            <div class="space-y-2 sm:space-y-3">
+              <div class="flex items-center justify-between">
+                <label class="block text-[11px] sm:text-xs font-mono uppercase tracking-wider text-zinc-300">
+                  ¿Con cuántas personas irás? <span class="text-zinc-500">(Máx. 5 acompañantes)</span>
+                </label>
+              </div>
+
+              <!-- Selector de Opciones con Pills Responsivos -->
+              <div class="grid grid-cols-3 sm:grid-cols-6 gap-2">
+                <!-- 0 -->
+                <label class="guest-pill block">
+                  <input type="radio" name="acompanantes" value="0" class="sr-only" checked>
+                  <div class="pill-content py-2.5 sm:py-3 text-center border border-white/15 rounded-xl text-zinc-300 hover:border-white/40 transition">
+                    <span class="block font-display font-bold text-base sm:text-xl leading-none">0</span>
+                    <span class="text-[9px] sm:text-[10px] font-mono text-zinc-400 block mt-1">Solo yo</span>
+                  </div>
+                </label>
+                <!-- 1 -->
+                <label class="guest-pill block">
+                  <input type="radio" name="acompanantes" value="1" class="sr-only">
+                  <div class="pill-content py-2.5 sm:py-3 text-center border border-white/15 rounded-xl text-zinc-300 hover:border-white/40 transition">
+                    <span class="block font-display font-bold text-base sm:text-xl leading-none">+1</span>
+                    <span class="text-[9px] sm:text-[10px] font-mono text-zinc-400 block mt-1">Persona</span>
+                  </div>
+                </label>
+                <!-- 2 -->
+                <label class="guest-pill block">
+                  <input type="radio" name="acompanantes" value="2" class="sr-only">
+                  <div class="pill-content py-2.5 sm:py-3 text-center border border-white/15 rounded-xl text-zinc-300 hover:border-white/40 transition">
+                    <span class="block font-display font-bold text-base sm:text-xl leading-none">+2</span>
+                    <span class="text-[9px] sm:text-[10px] font-mono text-zinc-400 block mt-1">Personas</span>
+                  </div>
+                </label>
+                <!-- 3 -->
+                <label class="guest-pill block">
+                  <input type="radio" name="acompanantes" value="3" class="sr-only">
+                  <div class="pill-content py-2.5 sm:py-3 text-center border border-white/15 rounded-xl text-zinc-300 hover:border-white/40 transition">
+                    <span class="block font-display font-bold text-base sm:text-xl leading-none">+3</span>
+                    <span class="text-[9px] sm:text-[10px] font-mono text-zinc-400 block mt-1">Personas</span>
+                  </div>
+                </label>
+                <!-- 4 -->
+                <label class="guest-pill block">
+                  <input type="radio" name="acompanantes" value="4" class="sr-only">
+                  <div class="pill-content py-2.5 sm:py-3 text-center border border-white/15 rounded-xl text-zinc-300 hover:border-white/40 transition">
+                    <span class="block font-display font-bold text-base sm:text-xl leading-none">+4</span>
+                    <span class="text-[9px] sm:text-[10px] font-mono text-zinc-400 block mt-1">Personas</span>
+                  </div>
+                </label>
+                <!-- 5 -->
+                <label class="guest-pill block">
+                  <input type="radio" name="acompanantes" value="5" class="sr-only">
+                  <div class="pill-content py-2.5 sm:py-3 text-center border border-white/15 rounded-xl text-zinc-300 hover:border-white/40 transition">
+                    <span class="block font-display font-bold text-base sm:text-xl leading-none">+5</span>
+                    <span class="text-[9px] sm:text-[10px] font-mono text-zinc-400 block mt-1">Máximo</span>
+                  </div>
+                </label>
+              </div>
+
+              <!-- Resumen Dinámico en vivo -->
+              <div id="guest-summary-text" class="text-xs font-mono text-zinc-400 py-1.5 px-3 rounded-lg bg-black/40 border border-white/5">
+                <span class="text-white font-medium">Asistirás en solitario:</span> <span class="text-[#d4ff00] font-bold">1 persona</span> en total.
+              </div>
+            </div>
+
+            <!-- Campo Rolita o Mensaje opcional -->
+            <div class="space-y-1.5">
+              <label for="mensaje" class="block text-[11px] sm:text-xs font-mono uppercase tracking-wider text-zinc-300">
+                ¿Alguna rola especial que quieras que suene? <span class="text-zinc-500">(Opcional)</span>
+              </label>
+              <input 
+                type="text" 
+                id="mensaje" 
+                name="mensaje" 
+                placeholder="Ej. Zoé, The Strokes, Caifanes, Arctic Monkeys..." 
+                class="w-full bg-[#0c0d11] border border-white/15 rounded-xl px-3.5 py-2.5 text-white placeholder-zinc-600 focus:outline-none focus:border-[#d4ff00] focus:ring-1 focus:ring-[#d4ff00] transition font-body text-base sm:text-sm"
+              >
+            </div>
+
+            <!-- Botón de Confirmación Principal -->
+            <div class="pt-2">
+              <button 
+                type="submit" 
+                id="submit-btn" 
+                class="w-full py-3.5 sm:py-4 px-4 sm:px-6 rounded-xl bg-[#d4ff00] text-black font-display font-black text-base sm:text-lg uppercase tracking-wider hover:bg-[#c3eb00] active:scale-[0.99] transition duration-150 flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(212,255,0,0.3)] cursor-pointer"
+              >
+                <span id="btn-spinner" class="hidden">
+                  <svg class="animate-spin -ml-1 mr-2 h-5 w-5 text-black" fill="none" viewBox="0 0 24 24">
+                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                  </svg>
+                </span>
+                <span id="btn-text">Confirmar mi Asistencia 🤘</span>
+              </button>
+              <p class="text-center text-[10px] sm:text-[11px] font-mono text-zinc-500 mt-2.5 flex items-center justify-center gap-1.5">
+                <svg class="w-3.5 h-3.5 text-zinc-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                Registro sincronizado en tiempo real con Google Sheets
+              </p>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- Tarjeta de Ticket de Confirmación (Se muestra al enviar o si ya confirmó) -->
+      <div id="ticket-result-container" class="hidden">
+        <div class="ticket-wrapper rounded-2xl bg-[#13151b] border-2 border-[#d4ff00] p-4.5 sm:p-7 md:p-8 relative shadow-[0_0_30px_rgba(212,255,0,0.2)]">
+          <div class="ticket-notch-l"></div>
+          
+          <div class="max-w-md mx-auto text-center space-y-4 sm:space-y-5">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#d4ff00]/15 border border-[#d4ff00]/40 text-[#d4ff00] text-[11px] sm:text-xs font-mono">
+              ✓ ASISTENCIA CONFIRMADA
+            </div>
+
+            <div>
+              <span class="text-[10px] sm:text-xs font-mono uppercase tracking-widest text-zinc-400">Pase Digital Oficial</span>
+              <h4 id="ticket-name" class="font-display font-extrabold text-2xl sm:text-3xl md:text-4xl text-white mt-1">
+                Invitado
+              </h4>
+              <p id="ticket-guests" class="text-xs sm:text-sm font-mono text-[#d4ff00] mt-1 font-semibold">
+                Solo tú (1 persona)
+              </p>
+            </div>
+
+            <div class="p-3.5 sm:p-4 rounded-xl bg-black/50 border border-white/10 text-left space-y-2 text-[11px] sm:text-xs font-mono">
+              <div class="flex justify-between">
+                <span class="text-zinc-500">EVENTO:</span>
+                <span class="text-white font-bold">2DO PRIMOFEST</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-zinc-500">FECHA:</span>
+                <span class="text-white">5 DIC 2026 // 8:00 PM</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-zinc-500">LUGAR:</span>
+                <span class="text-white">Calle Sonora #24, Col. Providencia</span>
+              </div>
+              <div id="ticket-song-container" class="flex justify-between border-t border-white/10 pt-1.5 hidden">
+                <span class="text-zinc-500">ROLITA PEDIDA:</span>
+                <span id="ticket-song" class="text-[#d4ff00] truncate max-w-[170px] sm:max-w-[220px]"></span>
+              </div>
+            </div>
+
+            <!-- Código de barras simulado -->
+            <div class="pt-1">
+              <div class="barcode-lines"></div>
+              <div id="ticket-id-display" class="text-[9px] sm:text-[10px] font-mono text-zinc-500 tracking-[0.3em] mt-1 uppercase">
+                PF26-0000
+              </div>
+            </div>
+
+            <div class="pt-2 flex flex-col sm:flex-row gap-2.5">
+              <button 
+                type="button" 
+                class="btn-download-flyer flex-1 py-3 px-4 rounded-xl bg-white text-black font-display font-bold text-xs sm:text-sm uppercase tracking-wider hover:bg-zinc-200 transition flex items-center justify-center gap-2 cursor-pointer"
+              >
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+                Descargar Flyer Oficial
+              </button>
+              <button 
+                type="button" 
+                onclick="resetFormView()" 
+                class="py-2.5 px-3 rounded-xl border border-white/20 text-zinc-300 hover:text-white hover:border-white/50 text-[11px] sm:text-xs font-mono uppercase transition cursor-pointer"
+              >
+                Registrar a otro primo
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN DE DESCARGA DE FLYER PARA COMPARTIR -->
+    <section class="rounded-2xl border border-white/10 bg-gradient-to-b from-[#13151b] to-[#0c0d11] p-5 sm:p-8 flex flex-col lg:flex-row items-center justify-between gap-6 sm:gap-8">
+      <div class="space-y-3 sm:space-y-4 max-w-lg text-center lg:text-left">
+        <div class="inline-flex items-center gap-1.5 text-[11px] sm:text-xs font-mono text-[#d4ff00]">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"/></svg>
+          <span>LISTO PARA WHATSAPP & HISTORIAS</span>
+        </div>
+        <h3 class="font-display font-extrabold text-xl sm:text-2xl md:text-3xl text-white uppercase tracking-tight">
+          Comparte el cartel con los primos
+        </h3>
+        <p class="text-xs sm:text-sm text-zinc-400 leading-relaxed">
+          Descarga la imagen oficial del evento optimizada en formato vertical HD (1080x1920) para mandar al grupo familiar o subir a tus estados.
+        </p>
+        <div class="pt-1">
+          <button 
+            type="button" 
+            class="btn-download-flyer w-full sm:w-auto py-3 px-5 sm:py-3.5 sm:px-6 rounded-xl bg-white text-black font-display font-bold text-xs sm:text-sm uppercase tracking-wider hover:bg-zinc-200 active:scale-95 transition duration-150 inline-flex items-center justify-center gap-2 shadow-xl cursor-pointer"
+          >
+            <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+            Descargar Flyer Oficial (PNG HD)
+          </button>
+        </div>
+      </div>
+
+      <!-- Mini Previsualización del Flyer (Escalada para móvil) -->
+      <div class="w-[180px] xs:w-[200px] sm:w-[220px] aspect-[9/16] bg-[#090a0d] border border-white/20 rounded-xl p-3 sm:p-4 flex flex-col justify-between text-center shadow-2xl relative select-none mx-auto flex-shrink-0">
+        <div class="border border-white/10 p-2.5 sm:p-3 h-full flex flex-col justify-between rounded-lg">
+          <div>
+            <span class="text-[7px] sm:text-[8px] font-mono tracking-widest text-[#d4ff00] uppercase block">// CARTEL OFICIAL //</span>
+            <span class="font-display font-black text-sm sm:text-base text-white uppercase tracking-tight block mt-0.5">2DO PRIMOFEST</span>
+          </div>
+          <div class="space-y-1 sm:space-y-1.5 py-2 sm:py-3 border-y border-white/10 my-auto">
+            <span class="font-display font-extrabold text-[11px] sm:text-xs text-white block">LA PETITE MORT</span>
+            <span class="text-[8px] sm:text-[9px] text-[#ff3366] block">✦ ✦ ✦</span>
+            <span class="font-display font-extrabold text-[11px] sm:text-xs text-white block">PLAGIO</span>
+            <span class="text-[7px] sm:text-[8px] font-mono text-zinc-400 block pt-0.5">+ DJ SET</span>
+          </div>
+          <div>
+            <span class="text-[8px] sm:text-[9px] font-mono text-black bg-[#d4ff00] font-bold px-1.5 py-0.5 rounded block mb-1">5 DIC 2026</span>
+            <span class="text-[7px] sm:text-[8px] font-mono text-zinc-400 block truncate">Sonora #24, Providencia</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER MINIMALISTA -->
+    <footer class="pt-6 sm:pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4 text-[11px] sm:text-xs font-mono text-zinc-500 text-center sm:text-left">
+      <div>
+        2DO PRIMOFEST © 2026 • SONORA #24, PROVIDENCIA
+      </div>
+      <div class="flex items-center gap-3">
+        <button type="button" onclick="toggleAdminModal()" class="hover:text-zinc-300 underline underline-offset-4 transition cursor-pointer">
+          Panel de Asistentes
+        </button>
+        <span>•</span>
+        <a href="#confirmar" class="hover:text-zinc-300 transition">Ir al Formulario</a>
+      </div>
+    </footer>
+  </main>
+
+  <!-- =========================================================================
+       BARRA FIJA INFERIOR PARA MÓVILES (ACCESO RÁPIDO A CONFIRMAR)
+       ========================================================================= -->
+  <div id="mobile-sticky-bar" class="fixed bottom-0 left-0 right-0 z-40 bg-[#090a0d]/95 backdrop-blur-md border-t border-white/10 px-4 py-2.5 flex items-center justify-between sm:hidden shadow-2xl">
+    <div class="flex items-center gap-2">
+      <span class="w-2 h-2 rounded-full bg-[#d4ff00] live-dot"></span>
+      <div>
+        <span class="font-display font-bold text-xs text-white block leading-none">2DO PRIMOFEST</span>
+        <span class="text-[9px] font-mono text-zinc-400">5 DIC • 8:00 PM</span>
+      </div>
+    </div>
+    <a href="#confirmar" class="text-xs font-mono font-bold uppercase tracking-wider py-1.5 px-3.5 rounded-full bg-[#d4ff00] text-black shadow-[0_0_12px_rgba(212,255,0,0.3)]">
+      Confirmar 🤘
+    </a>
+  </div>
+
+  <!-- =========================================================================
+       TEMPLATE OCULTO PARA EXPORTAR EL FLYER (AISLADO EN WRAPPER CERO IMPACTO MÓVIL)
+       ========================================================================= -->
+  <div id="flyer-export-wrapper">
+    <div id="flyer-export-template">
+      <div style="width: 540px; height: 960px; padding: 48px 40px; background-color: #0b0c10; color: #ffffff; display: flex; flex-direction: column; justify-content: space-between; border: 12px solid #141720; box-sizing: border-box; position: relative;">
+        
+        <!-- Marco decorativo rockero -->
+        <div style="position: absolute; top: 20px; left: 20px; right: 20px; bottom: 20px; border: 1px solid rgba(255,255,255,0.12); pointer-events: none;"></div>
+
+        <!-- Cabecera Flyer -->
+        <div style="text-align: center; z-index: 1;">
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.35em; color: #d4ff00; text-transform: uppercase; margin-bottom: 8px;">
+            // EDICIÓN EXCLUSIVA DE PRIMOS //
+          </div>
+          <div style="font-family: 'Syne', sans-serif; font-size: 54px; font-weight: 800; line-height: 0.95; letter-spacing: -0.04em; text-transform: uppercase; margin: 0;">
+            2DO PRIMO<br><span style="color: #d4ff00;">FEST</span>
+          </div>
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.2em; color: #a1a1aa; margin-top: 12px; text-transform: uppercase;">
+            ROCK EN VIVO • DJ SET • CERVEZA
+          </div>
+        </div>
+
+        <!-- Lineup Central del Flyer -->
+        <div style="margin: 24px 0; z-index: 1;">
+          <div style="border-top: 1px solid rgba(255,255,255,0.15); border-bottom: 1px solid rgba(255,255,255,0.15); padding: 18px 0; text-align: center;">
+            
+            <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #71717a; letter-spacing: 0.25em; text-transform: uppercase; margin-bottom: 12px;">
+              EN EL ESCENARIO
+            </div>
+
+            <!-- Banda 1 -->
+            <div style="margin-bottom: 16px;">
+              <div style="font-family: 'Syne', sans-serif; font-size: 32px; font-weight: 800; color: #ffffff; letter-spacing: -0.02em; line-height: 1;">
+                LA PETITE MORT
+              </div>
+              <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #d4ff00; letter-spacing: 0.15em; margin-top: 4px;">
+                ROCK EN VIVO
+              </div>
+            </div>
+
+            <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #ff3366; margin: 6px 0;">
+              ✦ ✦ ✦
+            </div>
+
+            <!-- Banda 2 -->
+            <div style="margin-top: 12px; margin-bottom: 18px;">
+              <div style="font-family: 'Syne', sans-serif; font-size: 32px; font-weight: 800; color: #ffffff; letter-spacing: -0.02em; line-height: 1;">
+                PLAGIO
+              </div>
+              <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #ff3366; letter-spacing: 0.15em; margin-top: 4px;">
+                ROCK EN VIVO
+              </div>
+            </div>
+
+            <!-- DJ Set -->
+            <div style="background-color: rgba(255,255,255,0.04); padding: 10px; border-radius: 8px; border: 1px dashed rgba(255,255,255,0.15);">
+              <div style="font-family: 'Syne', sans-serif; font-size: 18px; font-weight: 700; color: #ffffff;">
+                + DJ SET AFTERPARTY
+              </div>
+              <div style="font-family: 'JetBrains Mono', monospace; font-size: 9px; color: #a1a1aa; letter-spacing: 0.1em; margin-top: 2px;">
+                OPEN FORMAT // HASTA EL AMANECER
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Coordenadas & Footer del Flyer -->
+        <div style="text-align: center; z-index: 1;">
+          <div style="background-color: #d4ff00; color: #000000; padding: 10px 14px; border-radius: 6px; font-family: 'Syne', sans-serif; font-size: 18px; font-weight: 800; letter-spacing: -0.01em; margin-bottom: 14px;">
+            SÁBADO 5 DE DICIEMBRE, 2026
+          </div>
+
+          <div style="font-family: 'Space Grotesk', sans-serif; font-size: 15px; font-weight: 700; color: #ffffff; margin-bottom: 4px;">
+            CALLE SONORA #24, COL. PROVIDENCIA
+          </div>
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #a1a1aa; letter-spacing: 0.1em;">
+            PUERTAS: 8:00 PM // CONFIRMA TU LUGAR
+          </div>
+
+          <div style="margin-top: 18px; padding-top: 12px; border-top: 1px solid rgba(255,255,255,0.1); display: flex; justify-content: space-between; align-items: center;">
+            <span style="font-family: 'JetBrains Mono', monospace; font-size: 9px; color: #71717a;">NO COVER // TRAE TU SED</span>
+            <span style="font-family: 'JetBrains Mono', monospace; font-size: 9px; color: #d4ff00;">#PRIMOFEST2026</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       MODAL DE PANEL DE ASISTENTES (PARA EL ORGANIZADOR)
+       ========================================================================= -->
+  <div id="admin-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/80 backdrop-blur-sm">
+    <div class="bg-[#13151b] border border-white/20 rounded-2xl w-full max-w-2xl max-h-[90vh] flex flex-col overflow-hidden shadow-2xl">
+      <div class="p-4 sm:p-5 border-b border-white/10 flex items-center justify-between">
+        <div>
+          <h4 class="font-display font-bold text-base sm:text-lg text-white">Confirmaciones Guardadas</h4>
+          <p id="admin-total-headcount" class="text-[11px] sm:text-xs font-mono text-[#d4ff00]">0 personas en total</p>
+        </div>
+        <button type="button" onclick="toggleAdminModal()" class="text-zinc-400 hover:text-white p-1 cursor-pointer">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+
+      <div class="p-3.5 sm:p-5 overflow-y-auto flex-1">
+        <div class="text-[11px] sm:text-xs font-mono text-zinc-400 mb-3 bg-black/40 p-2.5 sm:p-3 rounded-lg border border-white/5">
+          💡 <strong>Nota del organizador:</strong> Todas las confirmaciones se envían a tu Google Sheet en tiempo real si configuraste <code class="text-[#d4ff00]">GOOGLE_SCRIPT_URL</code> en <code class="text-[#d4ff00]">js/app.js</code>. También se guardan aquí en tu navegador como respaldo local.
+        </div>
+
+        <div class="overflow-x-auto">
+          <table class="w-full text-left min-w-[360px]">
+            <thead>
+              <tr class="border-b border-white/10 text-[10px] sm:text-xs font-mono text-zinc-400 uppercase">
+                <th class="py-2 px-2 sm:px-3">Titular</th>
+                <th class="py-2 px-2 sm:px-3 text-center">Acomp.</th>
+                <th class="py-2 px-2 sm:px-3 text-center">Total</th>
+                <th class="py-2 px-2 sm:px-3">Mensaje / Rolita</th>
+              </tr>
+            </thead>
+            <tbody id="admin-table-body">
+              <!-- Filas dinámicas -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="p-3.5 sm:p-4 border-t border-white/10 bg-[#0c0d11] flex items-center justify-between">
+        <button type="button" onclick="downloadLocalCsv()" class="text-[11px] sm:text-xs font-mono py-1.5 px-3 rounded-lg border border-white/20 text-zinc-300 hover:text-white hover:border-white/40 transition cursor-pointer">
+          Descargar CSV
+        </button>
+        <button type="button" onclick="toggleAdminModal()" class="text-[11px] sm:text-xs font-mono py-1.5 px-3 sm:px-4 rounded-lg bg-white/10 text-white hover:bg-white/20 transition cursor-pointer">
+          Cerrar
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Container para avisos -->
+  <div id="toast-container" class="fixed bottom-16 sm:bottom-6 right-4 sm:right-6 z-50 flex flex-col gap-2 max-w-xs sm:max-w-sm pointer-events-none"></div>
+
+  <!-- Script Principal con Cache Buster -->
+  <script src="js/app.js?v=2.1"></script>
+</body>
+</html>

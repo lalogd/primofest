@@ -1,0 +1,218 @@
+/* ==========================================================================
+   2DO PRIMOFEST - MINIMALIST ROCK FESTIVAL STYLES (MOBILE FIRST & RESPONSIVE)
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Syne:wght@700;800&family=JetBrains+Mono:wght@400;500;700&display=swap');
+
+:root {
+  --bg-main: #0c0d11;
+  --bg-card: #13151b;
+  --bg-card-hover: #181b24;
+  --border-color: rgba(255, 255, 255, 0.1);
+  --border-highlight: #d4ff00;
+  --accent-lime: #d4ff00;
+  --accent-crimson: #ff3366;
+  --text-muted: #8e94a5;
+  --text-light: #f3f4f6;
+  --font-display: 'Syne', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-body: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  position: relative;
+  background-color: var(--bg-main);
+  color: var(--text-light);
+  font-family: var(--font-body);
+  background-image: 
+    radial-gradient(circle at 15% 15%, rgba(212, 255, 0, 0.04) 0%, transparent 40%),
+    radial-gradient(circle at 85% 65%, rgba(255, 51, 102, 0.03) 0%, transparent 45%);
+  background-attachment: fixed;
+}
+
+/* Typography Helpers */
+.font-display {
+  font-family: var(--font-display);
+}
+
+.font-mono {
+  font-family: var(--font-mono);
+}
+
+/* Marquee / Ticker */
+.marquee-track {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+  animation: marquee 24s linear infinite;
+}
+
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* Grain texture overlay (Non-blocking) */
+.grain-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  z-index: 99;
+}
+
+/* Ticket Notch Effects without causing overflow */
+.ticket-wrapper {
+  position: relative;
+  overflow: hidden;
+}
+
+.ticket-notch-l {
+  position: relative;
+}
+
+.ticket-notch-l::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: -14px;
+  transform: translateY(-50%);
+  width: 26px;
+  height: 26px;
+  background-color: var(--bg-main);
+  border-radius: 50%;
+  border-right: 2px solid var(--accent-lime);
+  z-index: 10;
+}
+
+.ticket-notch-l::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: -14px;
+  transform: translateY(-50%);
+  width: 26px;
+  height: 26px;
+  background-color: var(--bg-main);
+  border-radius: 50%;
+  border-left: 2px solid var(--accent-lime);
+  z-index: 10;
+}
+
+/* Pulsing Live Dot */
+.live-dot {
+  position: relative;
+}
+.live-dot::before {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  border-radius: 9999px;
+  background-color: var(--accent-lime);
+  opacity: 0.6;
+  animation: ping 1.8s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+@keyframes ping {
+  75%, 100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
+/* Band Card Hover Glitch / Glow */
+.band-card {
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+@media (hover: hover) {
+  .band-card:hover {
+    transform: translateY(-3px);
+    border-color: var(--accent-lime);
+    box-shadow: 0 10px 25px -8px rgba(212, 255, 0, 0.15);
+  }
+}
+
+/* Accompany Pills */
+.guest-pill {
+  transition: all 0.2s ease;
+  cursor: pointer;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+.guest-pill input[type="radio"]:checked + .pill-content {
+  background-color: var(--accent-lime);
+  color: #0c0d11;
+  font-weight: 700;
+  border-color: var(--accent-lime);
+  box-shadow: 0 0 14px rgba(212, 255, 0, 0.35);
+  transform: scale(1.02);
+}
+
+/* Digital Pass Barcode Effect */
+.barcode-lines {
+  background: repeating-linear-gradient(
+    90deg,
+    #ffffff 0px,
+    #ffffff 2px,
+    transparent 2px,
+    transparent 4px,
+    #ffffff 4px,
+    #ffffff 6px,
+    transparent 6px,
+    transparent 8px,
+    #ffffff 8px,
+    #ffffff 11px,
+    transparent 11px,
+    transparent 13px,
+    #ffffff 13px,
+    #ffffff 14px
+  );
+  height: 42px;
+  width: 100%;
+  opacity: 0.85;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-main);
+}
+::-webkit-scrollbar-thumb {
+  background: #252936;
+  border-radius: 3px;
+}
+
+/* CONTENEDOR OCULTO AISLADO PARA EXPORTAR EL FLYER (0 IMPACTO EN VIEWPORT MÓVIL) */
+#flyer-export-wrapper {
+  display: none;
+}
+
+#flyer-export-template {
+  width: 540px;
+  height: 960px;
+  background-color: #0b0c10;
+  color: #ffffff;
+  font-family: 'Space Grotesk', sans-serif;
+}
